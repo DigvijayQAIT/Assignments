@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Tatoc {
 
@@ -58,7 +56,7 @@ public class Tatoc {
 		Actions actions = new Actions(driver);
 		WebElement drop = driver.findElement(By.id("dropbox"));
 		WebElement drag = driver.findElement(By.id("dragbox"));
-		actions.dragAndDrop(drag, drop).build();
+		actions.dragAndDrop(drag, drop).build().perform();
 		
 		// When the item dragged to the required location proceed is clicked
 		driver.findElement(By.cssSelector("body > div > div.page > a")).click();
@@ -71,8 +69,8 @@ public class Tatoc {
 		driver.switchTo().window(tabs2.get(1));
 		
 		// Sending my name as a key and submitting
-		driver.findElement(By.cssSelector("#name")).sendKeys("Digvijay Singh");
-		driver.findElement(By.cssSelector("#submit")).click();
+		driver.findElement(By.id("name")).sendKeys("Digvijay Singh");
+		driver.findElement(By.id("submit")).click();
 		
 		// Back to previous tab
 		driver.switchTo().window(tabs2.get(0));
